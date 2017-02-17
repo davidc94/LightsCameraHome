@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_cameras"
+        icon="@drawable/ic_favorites"
+        title="Camera"
+        barColorWhenSelected="@color/colorPrimaryDark"/>
+    <tab
+        id="@+id/tab_home"
+        icon="@drawable/ic_nearby"
+        title="Home"
+        barColorWhenSelected="@color/colorPrimaryDark"/>
+    <tab
+        id="@+id/tab_lights"
+        icon="@drawable/ic_friends"
+        title="Lights"
+        barColorWhenSelected="@color/colorPrimaryDark"/>
+</tabs>
