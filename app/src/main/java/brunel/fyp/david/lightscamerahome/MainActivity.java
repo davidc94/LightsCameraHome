@@ -1,22 +1,19 @@
 package brunel.fyp.david.lightscamerahome;
 
-import android.app.Activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
-
 import android.support.v7.app.AppCompatActivity;
-
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ncapdevi.fragnav.FragNavController;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
+
 
 import java.util.ArrayList;
 import java.util.List;
