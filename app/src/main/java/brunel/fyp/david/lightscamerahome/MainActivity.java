@@ -1,6 +1,5 @@
 package brunel.fyp.david.lightscamerahome;
 
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;

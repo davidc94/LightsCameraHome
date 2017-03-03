@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import java.io.File;
 
+import brunel.fyp.david.lightscamerahome.libvlc.MainVideoActivity;
+
 import brunel.fyp.david.lightscamerahome.libvlc.DirectoryAdapter;
 import brunel.fyp.david.lightscamerahome.libvlc.LibVLC;
 import brunel.fyp.david.lightscamerahome.libvlc.LibVlcException;
@@ -34,6 +36,9 @@ public class CamerasFragment extends Fragment{
     DirectoryAdapter mAdapter;
     LibVLC mLibVLC;
 
+    Button button1;
+    Button button2;
+
     public static CamerasFragment newInstance (int instance){
         Bundle args = new Bundle();
         args.putInt("argsInstance", instance);
@@ -42,111 +47,25 @@ public class CamerasFragment extends Fragment{
         return camerasFragment;
     }
 
-    View.OnClickListener mSimpleListener = new View.OnClickListener() {
-
-        @Override
-        public void onClick(View arg0)
-        {
-            switch (arg0.getId()){
-
-                case R.id.button1:
-                    Intent intent = new Intent(getActivity(), VideoActivity.class);
-                    intent.putExtra(VideoActivity.LOCATION, streamAddress);
-                    startActivity(intent);
-                    break;
-
-//                case R.id.button2:
-//                    Intent intent2 = new Intent(MainActivity.this, VideoActivity.class);
-//                    intent2.putExtra(VideoActivity.LOCATION, streamAddress);
-//                    startActivity(intent2);
-//                    break;
-
-                default:
-
-                    break;
-
-            }
-
-//            Intent intent = new Intent(MainActivity.this, VideoActivity.class);
-//            intent.putExtra(VideoActivity.LOCATION, BIG_H264_FILE_ON_HTTP);
-//            startActivity(intent);
-        }
-
-//        public void onClick_old(View arg0) {
-//            // Build the path to the media file
-//            String amp3 = Environment.getExternalStorageDirectory()
-//                    .getAbsolutePath() + "/a.mp3";
-//            if(!new File(amp3).exists()) {
-//                Toast.makeText(
-//                        MainActivity.this,
-//                        Environment.getExternalStorageDirectory()
-//                                .getAbsolutePath() + "/a.mp3 does not exist!",
-//                        Toast.LENGTH_LONG).show();
-//                return;
-//            }
-//
-//            // LibVLC manages playback with media lists.
-//            // Let's get the primary default list that comes with it.
-//            MediaList list = mLibVLC.getPrimaryMediaList();
-//
-//            // Clear the list for demonstration purposes.
-//            list.clear();
-//
-//            // Add the file. Notice that paths _must_ be converted to locations.
-//            list.add(LibVLC.PathToURI(amp3));
-//
-//            // Finally, play it!
-//            mLibVLC.playIndex(0);
-//        }
-    };
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         getActivity().setTitle("Cameras");
 
+        View view = inflater.inflate(R.layout.fragment_cameras, container, false);
 
-        try {
-            mLibVLC = LibVLC.getInstance();
-            mLibVLC.init(getActivity());
-        } catch(LibVlcException e) {
-            Toast.makeText(getActivity(),
-                    "Error initializing the libVLC multimedia framework!",
-                    Toast.LENGTH_LONG).show();
-            //finish();
-        }
+        button1 = (Button) view.findViewById(R.id.button1);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), VideoActivity.class);
+                        intent.putExtra(VideoActivity.LOCATION, streamAddress);
+                        startActivity(intent);
+            }
+        });
 
-        //super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+        button2 = (Button) view.findViewById(R.id.button2);
 
-        // Set up the UI elements.
-        mAdapter = new DirectoryAdapter();
-        Button load_a_mp3 = (Button) getActivity().findViewById(R.id.button1);
-
-        Button load_a_mp32 = (Button) getActivity().findViewById(R.id.button2);
-
-        load_a_mp3.setOnClickListener(mSimpleListener);
-
-        load_a_mp32.setOnClickListener(mSimpleListener);
-
-//        final ListView mediaView = (ListView) getActivity().findViewById(R.id.mediaView);
-//        mediaView.setAdapter(mAdapter);
-//        mediaView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> arg0, View arg1,
-//                                    int position, long arg3) {
-//                if (mAdapter.isAudioMode()) {
-//                    mLibVLC.getMediaList().insert(0,
-//                            (String) mAdapter.getItem(position));
-//                    mLibVLC.playIndex(0);
-//                } else {
-//                    Intent intent = new Intent(MainActivity.this, VideoActivity.class);
-//                    intent.putExtra(VideoActivity.LOCATION, (String) mAdapter.getItem(position));
-//                    startActivity(intent);
-//                }
-//            }
-//        });
-
-        return inflater.inflate(R.layout.fragment_cameras, container, false);
+        return view;
 
     }
 

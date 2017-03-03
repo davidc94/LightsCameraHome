@@ -5,11 +5,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/camerasText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="Cameras"/>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.55"
+            android:layout_marginLeft="5dp"
+            android:padding="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/camerasText"
+            android:text="Camera 1"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.55"
+            android:layout_marginRight="5dp"
+            android:padding="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/camerasText"
+            android:text="Camera 2"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5">
+
+        <TextView
+            android:id="@+id/lightsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="Lights"/>
+
+    </RelativeLayout>
+
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:textColor="@color/white"
-        android:text="Home content"/>
+        android:text="Home content"/>-->
 
 </LinearLayout>

@@ -33,7 +33,8 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback,
         IVideoPlayer {
     public final static String TAG = "LibVLCAndroidSample/VideoActivity";
 
-    public final static String LOCATION = "com.compdigitec.libvlcandroidsample.VideoActivity.location";
+    //public final static String LOCATION = "com.compdigitec.libvlcandroidsample.VideoActivity.location";
+    public final static String LOCATION = "brunel.fyp.david.lightscamerahome.libvlc.VideoActivity.location";
 
     private String mFilePath;
 
