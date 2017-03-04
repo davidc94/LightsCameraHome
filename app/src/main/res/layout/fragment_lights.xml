@@ -14,12 +14,48 @@
         android:text="Lights content"/>
 
     <Button
-        android:id="@+id/buttonRand"
+        android:id="@+id/buttonOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="click here" android:paddingLeft="10dp" android:paddingRight="10dp"/>
+        android:text="Light On" android:paddingLeft="10dp" android:paddingRight="10dp"/>
+
+    <Button
+        android:id="@+id/buttonOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonOn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Light Off" android:paddingLeft="10dp" android:paddingRight="10dp"/>
+
+    <Button
+        android:id="@+id/buttonRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonOff"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Light Red" android:paddingLeft="10dp" android:paddingRight="10dp"/>
+
+    <Button
+        android:id="@+id/buttonBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonRed"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Light Blue" android:paddingLeft="10dp" android:paddingRight="10dp"/>
+
+    <Button
+        android:id="@+id/buttonGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonBlue"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Light Green" android:paddingLeft="10dp" android:paddingRight="10dp"/>
 
 </LinearLayout>

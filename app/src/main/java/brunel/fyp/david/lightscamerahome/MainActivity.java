@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView messageView;
     private BottomBar bottomBar;
     public FragNavController fragNavController;
 
@@ -74,29 +73,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-//        messageView = (TextView) findViewById(R.id.messageView);
-//
-//        bottomBar = (BottomBar) findViewById(R.id.bottomBar);
-//        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-//            @Override
-//            public void onTabSelected(@IdRes int tabId) {
-//                messageView.setText(TabMessage.get(tabId, false));
-//            }
-//        });
-//
-//        bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
-//            @Override
-//            public void onTabReSelected(@IdRes int tabId) {
-//                Toast.makeText(getApplicationContext(), TabMessage.get(tabId, true), Toast.LENGTH_LONG).show();
-//
-//                //use if statement checks to determine which tab is selected
-//                if (tabId == R.id.tab_lights){
-//
-//                    setContentView(R.layout.activity_cameras);
-//                }
-//            }
-//        });
     }
 
 
@@ -119,11 +95,5 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-
-//        @Override
-//        protected void onSaveInstanceState(Bundle outState){
-//            super.onSaveInstanceState(outState);
-//            bottomBar.onSaveInstanceState(outState);
-//        }
 
 }
