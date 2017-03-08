@@ -187,7 +187,7 @@ public class LightsFragment extends Fragment{
             public void run() {
                 try {
                     connection();
-                    out.write("{\"on\":true, \"sat\":254, \"bri\":254,\"hue\":65280}");
+                    out.write("{\"sat\":254, \"hue\":65280}");
                     out.close();
                     System.err.println(httpCon.getResponseCode());
                 } catch (Exception e) {
@@ -206,7 +206,7 @@ public class LightsFragment extends Fragment{
             public void run() {
                 try {
                     connection();
-                    out.write("{\"on\":true, \"sat\":254, \"bri\":254,\"hue\":46920}");
+                    out.write("{\"sat\":254, \"hue\":46920}");
                     out.close();
                     System.err.println(httpCon.getResponseCode());
                 } catch (Exception e) {
@@ -225,7 +225,7 @@ public class LightsFragment extends Fragment{
             public void run() {
                 try {
                     connection();
-                    out.write("{\"on\":true, \"sat\":254, \"bri\":254,\"hue\":25500}");
+                    out.write("{\"sat\":254, \"hue\":25500}");
                     out.close();
                     System.err.println(httpCon.getResponseCode());
                 } catch (Exception e) {
