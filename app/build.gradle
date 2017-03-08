@@ -32,4 +32,6 @@ dependencies {
     compile 'de.mrmaffen:vlc-android-sdk:2.0.6'
     compile files('libs/huelocalsdk.jar')
     compile files('libs/huesdkresources.jar')
+    compile 'com.crystal:crystalrangeseekbar:1.1.1'
+    'com.android.support:percent:23.0.0'
 }

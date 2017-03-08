@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.crystal.crystalrangeseekbar.interfaces.OnSeekbarFinalValueListener;
+import com.crystal.crystalrangeseekbar.widgets.BubbleThumbSeekbar;
+
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.HttpURLConnection;
@@ -24,6 +27,8 @@ public class LightsFragment extends Fragment{
     public static HttpURLConnection httpCon;
     public static OutputStreamWriter out;
 
+    public static double Brightness;
+
     public static LightsFragment newInstance (int instance){
         Bundle args = new Bundle();
         args.putInt("argsInstance", instance);
@@ -39,13 +44,36 @@ public class LightsFragment extends Fragment{
         //creating view
         View view = inflater.inflate(R.layout.fragment_lights, container, false);
 
+        //creating seekbar
+        final BubbleThumbSeekbar seekbar = (BubbleThumbSeekbar) view.findViewById(R.id.rangeSeekbar1);
+
+        // set final value listener
+        seekbar.setOnSeekbarFinalValueListener(new OnSeekbarFinalValueListener() {
+            @Override
+            public void finalValue(Number value) {
+                //Log.d("CRS=>", String.valueOf(value));
+                Brightness = value.intValue();
+                Log.d("CRS=>", String.valueOf(Brightness));
+
+                //if slider = 0 turn lights off
+                if (Brightness == 0.0){
+                    try {
+                        lightsOff();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    //else set lights to whatever value
+                } else {
+                    try {
+                        lightsBrightness();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
         //creating buttons and onClickListeners
-        Button buttonLightsOn = (Button) view.findViewById(R.id.buttonOn);
-        buttonLightsOn.setOnClickListener(clickListener);
-
-        Button buttonLightsOff = (Button) view.findViewById(R.id.buttonOff);
-        buttonLightsOff.setOnClickListener(clickListener);
-
         Button buttonLightsRed = (Button) view.findViewById(R.id.buttonRed);
         buttonLightsRed.setOnClickListener(clickListener);
 
@@ -63,14 +91,6 @@ public class LightsFragment extends Fragment{
 
         public void onClick(View view){
             switch (view.getId()){
-                case R.id.buttonOn:
-                    try {
-                        lightsOn();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-
                 case R.id.buttonOff:
                     try {
                         lightsOff();
@@ -121,35 +141,15 @@ public class LightsFragment extends Fragment{
 
     }
 
-//    public void lightsThread(String message) throws Exception{
-//
-//        Thread thread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    connection();
-//                    out.write(message);
-//                    out.close();
-//                    System.err.println(httpCon.getResponseCode());
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-//        thread.start();
-//
-//    }
-
     //lights on method
-    public void lightsOn() throws Exception{
+    public void lightsBrightness() throws Exception{
 
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     connection();
-                    String text = "{\"on\":true}";
-                    out.write(text);
+                    out.write("{\"on\":true, \"bri\":"+ ((int) Brightness)+"}");
                     out.close();
                     System.err.println(httpCon.getResponseCode());
                 } catch (Exception e) {
@@ -158,8 +158,8 @@ public class LightsFragment extends Fragment{
             }
         });
         thread.start();
-
     }
+
     //lights off method
     public void lightsOff() throws Exception{
 
@@ -177,7 +177,6 @@ public class LightsFragment extends Fragment{
             }
         });
         thread.start();
-
     }
 
     //lights red colour method
@@ -197,7 +196,6 @@ public class LightsFragment extends Fragment{
             }
         });
         thread.start();
-
     }
 
     //lights blue colour method
@@ -217,7 +215,6 @@ public class LightsFragment extends Fragment{
             }
         });
         thread.start();
-
     }
 
     //lights green colour method
@@ -237,7 +234,6 @@ public class LightsFragment extends Fragment{
             }
         });
         thread.start();
-
     }
 
 }

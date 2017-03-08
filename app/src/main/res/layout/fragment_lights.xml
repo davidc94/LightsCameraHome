@@ -6,56 +6,74 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textLightName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/white"
-        android:text="Lights content"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="20dp"
+        android:text="Light One"/>
+
+    <LinearLayout android:id="@+id/RelativeLayout01"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:weightSum="15">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_brightness_low"/>
+
+        <com.crystal.crystalrangeseekbar.widgets.BubbleThumbSeekbar
+            android:id="@+id/rangeSeekbar1"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            app:corner_radius="0"
+            app:min_value="0"
+            app:max_value="254"
+            app:bar_color="@color/black"
+            app:bar_highlight_color="@color/colorPrimary"
+            app:left_thumb_color="@color/colorPrimary"
+            app:left_thumb_color_pressed="@color/colorPrimary"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_brightness_high"/>
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/buttonOn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Light On" android:paddingLeft="10dp" android:paddingRight="10dp"/>
+    android:id="@+id/buttonRed"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/buttonOff"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="20dp"
+    android:text="Light Red" android:paddingLeft="10dp" android:paddingRight="10dp"/>
 
-    <Button
-        android:id="@+id/buttonOff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonOn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Light Off" android:paddingLeft="10dp" android:paddingRight="10dp"/>
+<Button
+    android:id="@+id/buttonBlue"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/buttonRed"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="20dp"
+    android:text="Light Blue" android:paddingLeft="10dp" android:paddingRight="10dp"/>
 
-    <Button
-        android:id="@+id/buttonRed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonOff"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Light Red" android:paddingLeft="10dp" android:paddingRight="10dp"/>
-
-    <Button
-        android:id="@+id/buttonBlue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonRed"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Light Blue" android:paddingLeft="10dp" android:paddingRight="10dp"/>
-
-    <Button
-        android:id="@+id/buttonGreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonBlue"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Light Green" android:paddingLeft="10dp" android:paddingRight="10dp"/>
+<Button
+    android:id="@+id/buttonGreen"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/buttonBlue"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="20dp"
+    android:text="Light Green" android:paddingLeft="10dp" android:paddingRight="10dp"/>
 
 </LinearLayout>
