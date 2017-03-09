@@ -27,7 +27,9 @@ public class LightsFragment extends Fragment{
     public static HttpURLConnection httpCon;
     public static OutputStreamWriter out;
 
-    public static double Brightness;
+    public static double brightness;
+    public static int colourValue;
+    public static int saturation;
 
     public static LightsFragment newInstance (int instance){
         Bundle args = new Bundle();
@@ -51,12 +53,11 @@ public class LightsFragment extends Fragment{
         seekbar.setOnSeekbarFinalValueListener(new OnSeekbarFinalValueListener() {
             @Override
             public void finalValue(Number value) {
-                //Log.d("CRS=>", String.valueOf(value));
-                Brightness = value.intValue();
-                Log.d("CRS=>", String.valueOf(Brightness));
+                brightness = value.intValue();
+                Log.d("CRS=>", String.valueOf(brightness));
 
                 //if slider = 0 turn lights off
-                if (Brightness == 0.0){
+                if (brightness == 0.0){
                     try {
                         lightsOff();
                     } catch (Exception e) {
@@ -104,7 +105,9 @@ public class LightsFragment extends Fragment{
 
                 case R.id.buttonRed:
                     try {
-                        lightsRed();
+                        colourValue = 65280;
+                        saturation = 254;
+                        lightsColour();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -112,7 +115,9 @@ public class LightsFragment extends Fragment{
 
                 case R.id.buttonBlue:
                     try {
-                        lightsBlue();
+                        colourValue = 46920;
+                        saturation = 254;
+                        lightsColour();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -120,7 +125,9 @@ public class LightsFragment extends Fragment{
 
                 case R.id.buttonGreen:
                     try {
-                        lightsGreen();
+                        colourValue = 25500;
+                        saturation = 254;
+                        lightsColour();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -128,7 +135,9 @@ public class LightsFragment extends Fragment{
 
                 case R.id.buttonWhite:
                     try {
-                        lightsWhite();
+                        colourValue = 38000;
+                        saturation = 100;
+                        lightsColour();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -160,7 +169,7 @@ public class LightsFragment extends Fragment{
             public void run() {
                 try {
                     connection();
-                    out.write("{\"on\":true, \"bri\":"+ ((int) Brightness)+"}");
+                    out.write("{\"on\":true, \"bri\":"+ ((int) brightness)+"}");
                     out.close();
                     System.err.println(httpCon.getResponseCode());
                 } catch (Exception e) {
@@ -191,71 +200,14 @@ public class LightsFragment extends Fragment{
     }
 
     //lights red colour method
-    public void lightsRed() throws Exception{
+    public void lightsColour() throws Exception{
 
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     connection();
-                    out.write("{\"sat\":254, \"hue\":65280}");
-                    out.close();
-                    System.err.println(httpCon.getResponseCode());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        thread.start();
-    }
-
-    //lights blue colour method
-    public void lightsBlue() throws Exception{
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    connection();
-                    out.write("{\"sat\":254, \"hue\":46920}");
-                    out.close();
-                    System.err.println(httpCon.getResponseCode());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        thread.start();
-    }
-
-    //lights green colour method
-    public void lightsGreen() throws Exception{
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    connection();
-                    out.write("{\"sat\":254, \"hue\":25500}");
-                    out.close();
-                    System.err.println(httpCon.getResponseCode());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        thread.start();
-    }
-
-    //lights white colour method
-    public void lightsWhite() throws Exception{
-
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    connection();
-                    out.write("{\"sat\":100, \"hue\":38000}");
+                    out.write("{\"sat\":"+saturation+", \"hue\":"+colourValue+"}");
                     out.close();
                     System.err.println(httpCon.getResponseCode());
                 } catch (Exception e) {

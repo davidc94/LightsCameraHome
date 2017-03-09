@@ -75,12 +75,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void switchLights(){
+        fragNavController.switchTab(TAB_LIGHTS);
+    }
+
+    public void switchCamera(){
+        fragNavController.switchTab(TAB_CAMERAS);
+    }
 
     @Override
     public void onBackPressed() {
         //new AlertDialog.Builder(this)
         new AlertDialog.Builder(this, R.style.DialogStyle)
-                //.setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Quit App")
                 .setMessage("Are you sure you want to quit?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener()
@@ -94,6 +100,5 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButton("No", null)
                 .show();
     }
-
 
 }

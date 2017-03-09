@@ -16,12 +16,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
             android:textColor="@color/white"
             android:text="Cameras"/>
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/buttonCam1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.55"
@@ -32,7 +33,7 @@
             android:text="Camera 1"/>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonCam2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.55"
@@ -55,17 +56,57 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
             android:textColor="@color/white"
             android:text="Lights"/>
 
-    </RelativeLayout>
+        <LinearLayout android:id="@+id/LinearLayout01"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/lightsText"
+            android:weightSum="15">
 
-    <!--<TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:text="Home content"/>-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_brightness_low"/>
+
+            <com.crystal.crystalrangeseekbar.widgets.BubbleThumbSeekbar
+                android:id="@+id/rangeSeekbar1"
+                android:layout_width="175dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                app:corner_radius="0"
+                app:min_value="0"
+                app:max_value="254"
+                app:bar_color="@color/black"
+                app:bar_highlight_color="@color/colorPrimary"
+                app:left_thumb_color="@color/colorPrimary"
+                app:left_thumb_color_pressed="@color/colorPrimary"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_brightness_high"/>
+
+            <Button
+                android:id="@+id/buttonColourSwatch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.55"
+                android:layout_marginRight="5dp"
+                android:padding="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/camerasText"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </LinearLayout>
