@@ -83,6 +83,9 @@ public class LightsFragment extends Fragment{
         Button buttonLightsGreen = (Button) view.findViewById(R.id.buttonGreen);
         buttonLightsGreen.setOnClickListener(clickListener);
 
+        Button buttonLightsWhite = (Button) view.findViewById(R.id.buttonWhite);
+        buttonLightsWhite.setOnClickListener(clickListener);
+
         return view;
     }
 
@@ -118,6 +121,14 @@ public class LightsFragment extends Fragment{
                 case R.id.buttonGreen:
                     try {
                         lightsGreen();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+
+                case R.id.buttonWhite:
+                    try {
+                        lightsWhite();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -226,6 +237,25 @@ public class LightsFragment extends Fragment{
                 try {
                     connection();
                     out.write("{\"sat\":254, \"hue\":25500}");
+                    out.close();
+                    System.err.println(httpCon.getResponseCode());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+    }
+
+    //lights white colour method
+    public void lightsWhite() throws Exception{
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    connection();
+                    out.write("{\"sat\":100, \"hue\":38000}");
                     out.close();
                     System.err.println(httpCon.getResponseCode());
                 } catch (Exception e) {

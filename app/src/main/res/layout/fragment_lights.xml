@@ -76,4 +76,13 @@
     android:layout_marginTop="20dp"
     android:text="Light Green" android:paddingLeft="10dp" android:paddingRight="10dp"/>
 
+    <Button
+        android:id="@+id/buttonWhite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonBlue"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Light White" android:paddingLeft="10dp" android:paddingRight="10dp"/>
+
 </LinearLayout>
