@@ -22,7 +22,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".libvlc.VideoActivity"></activity>
+        <activity
+            android:name=".VLCActivity"
+            android:label="VLCActivity" >
+        </activity>
 
 
 
