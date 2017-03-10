@@ -1,28 +1,23 @@
 package brunel.fyp.david.lightscamerahome;
 
-import android.app.Activity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
-
 import android.support.v7.app.AppCompatActivity;
-
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ncapdevi.fragnav.FragNavController;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView messageView;
     private BottomBar bottomBar;
     public FragNavController fragNavController;
 
@@ -78,37 +73,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-//        messageView = (TextView) findViewById(R.id.messageView);
-//
-//        bottomBar = (BottomBar) findViewById(R.id.bottomBar);
-//        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-//            @Override
-//            public void onTabSelected(@IdRes int tabId) {
-//                messageView.setText(TabMessage.get(tabId, false));
-//            }
-//        });
-//
-//        bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
-//            @Override
-//            public void onTabReSelected(@IdRes int tabId) {
-//                Toast.makeText(getApplicationContext(), TabMessage.get(tabId, true), Toast.LENGTH_LONG).show();
-//
-//                //use if statement checks to determine which tab is selected
-//                if (tabId == R.id.tab_lights){
-//
-//                    setContentView(R.layout.activity_cameras);
-//                }
-//            }
-//        });
     }
 
+    public void switchLights(){
+        fragNavController.switchTab(TAB_LIGHTS);
+    }
+
+    public void switchCamera(){
+        fragNavController.switchTab(TAB_CAMERAS);
+    }
 
     @Override
     public void onBackPressed() {
         //new AlertDialog.Builder(this)
         new AlertDialog.Builder(this, R.style.DialogStyle)
-                //.setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle("Quit App")
                 .setMessage("Are you sure you want to quit?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener()
@@ -122,12 +100,5 @@ public class MainActivity extends AppCompatActivity {
                 .setNegativeButton("No", null)
                 .show();
     }
-
-
-//        @Override
-//        protected void onSaveInstanceState(Bundle outState){
-//            super.onSaveInstanceState(outState);
-//            bottomBar.onSaveInstanceState(outState);
-//        }
 
 }
