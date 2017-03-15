@@ -55,6 +55,7 @@
     android:layout_height="wrap_content"
     android:layout_below="@+id/buttonOff"
     android:layout_centerHorizontal="true"
+    android:layout_marginLeft="20dp"
     android:layout_marginTop="20dp"
     android:text="Light Red" android:paddingLeft="10dp" android:paddingRight="10dp"/>
 
@@ -64,6 +65,7 @@
     android:layout_height="wrap_content"
     android:layout_below="@+id/buttonRed"
     android:layout_centerHorizontal="true"
+    android:layout_marginLeft="20dp"
     android:layout_marginTop="20dp"
     android:text="Light Blue" android:paddingLeft="10dp" android:paddingRight="10dp"/>
 
@@ -73,6 +75,7 @@
     android:layout_height="wrap_content"
     android:layout_below="@+id/buttonBlue"
     android:layout_centerHorizontal="true"
+    android:layout_marginLeft="20dp"
     android:layout_marginTop="20dp"
     android:text="Light Green" android:paddingLeft="10dp" android:paddingRight="10dp"/>
 
@@ -82,7 +85,18 @@
     android:layout_height="wrap_content"
     android:layout_below="@+id/buttonBlue"
     android:layout_centerHorizontal="true"
+    android:layout_marginLeft="20dp"
     android:layout_marginTop="20dp"
     android:text="Light White" android:paddingLeft="10dp" android:paddingRight="10dp"/>
+
+    <Button
+        android:id="@+id/buttonWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonWhite"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Weather" android:paddingLeft="10dp" android:paddingRight="10dp"/>
 
 </LinearLayout>

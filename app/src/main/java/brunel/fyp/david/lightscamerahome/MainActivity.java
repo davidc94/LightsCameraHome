@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 
 import com.ncapdevi.fragnav.FragNavController;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +23,16 @@ public class MainActivity extends AppCompatActivity {
     private final int TAB_CAMERAS = FragNavController.TAB2;
     private final int TAB_LIGHTS = FragNavController.TAB3;
 
+    public static List<Fragment> fragments;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //creating list of fragments
-        List<Fragment> fragments = new ArrayList<>(3);
+        //List<Fragment> fragments = new ArrayList<>(3);
+        fragments = new ArrayList<>(3);
 
         //adding fragments to list
         fragments.add(HomeFragment.newInstance(0));
@@ -75,13 +76,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void switchLights(){
-        fragNavController.switchTab(TAB_LIGHTS);
+    public void pushFrags(){
+        fragNavController.push(HomeFragment.newInstance(0));
+        fragNavController.push(CamerasFragment.newInstance(0));
+        fragNavController.push(LightsFragment.newInstance(0));
     }
 
-    public void switchCamera(){
-        fragNavController.switchTab(TAB_CAMERAS);
+    public void popFrags(){
+        fragNavController.pop();
+        fragNavController.pop();
+        fragNavController.pop();
     }
+
+    //new code for replacing fragment doesnt work on older library
+//    public void switchLights(){
+//        fragNavController.switchTab(TAB_LIGHTS);
+//    }
+//
+//    public void switchCamera(){
+//        fragNavController.switchTab(TAB_CAMERAS);
+//    }
 
     @Override
     public void onBackPressed() {

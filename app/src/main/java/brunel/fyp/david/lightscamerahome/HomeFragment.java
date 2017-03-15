@@ -1,7 +1,12 @@
 package brunel.fyp.david.lightscamerahome;
 
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+
+import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +16,14 @@ import android.widget.Button;
 import com.crystal.crystalrangeseekbar.interfaces.OnSeekbarFinalValueListener;
 import com.crystal.crystalrangeseekbar.widgets.BubbleThumbSeekbar;
 
+import com.transitionseverywhere.TransitionManager;
+import com.transitionseverywhere.Recolor;
+
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by David-Desktop on 16/02/2017.
@@ -27,6 +37,8 @@ public class HomeFragment extends Fragment{
     public static OutputStreamWriter out;
 
     public static double brightness;
+
+    //public static String colour = "red";
 
     public static HomeFragment newInstance (int instance){
         Bundle args = new Bundle();
@@ -42,24 +54,6 @@ public class HomeFragment extends Fragment{
 
         //creating view
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        Button buttonCam1 = (Button) view.findViewById(R.id.buttonCam1);
-        buttonCam1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity mA = new MainActivity();
-                mA.switchCamera();
-            }
-        });
-
-        Button buttonCam2 = (Button) view.findViewById(R.id.buttonCam2);
-        buttonCam2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity mA = new MainActivity();
-                mA.switchCamera();
-            }
-        });
 
         //creating seekbar
         final BubbleThumbSeekbar seekbar = (BubbleThumbSeekbar) view.findViewById(R.id.rangeSeekbar1);
@@ -89,12 +83,36 @@ public class HomeFragment extends Fragment{
             }
         });
 
-        Button buttonColourSwatch = (Button) view.findViewById(R.id.buttonColourSwatch);
+        final ViewGroup transitionsContainer = (ViewGroup) view.findViewById(R.id.LinearLayout01);
+        final Button buttonColourSwatch = (Button) view.findViewById(R.id.buttonColourSwatch);
+
         buttonColourSwatch.setOnClickListener(new View.OnClickListener() {
+
+            boolean isColorsInverted;
+
             @Override
             public void onClick(View v) {
-                MainActivity mA = new MainActivity();
-                mA.switchLights();
+                TransitionManager.beginDelayedTransition(transitionsContainer, new Recolor().setDuration(300).setInterpolator(new FastOutLinearInInterpolator()).setStartDelay(200));
+
+                isColorsInverted = !isColorsInverted;
+
+                String colour = LightsFragment.colour;
+                Log.d("test",colour);
+
+                switch (colour){
+                    case "red":
+                        buttonColourSwatch.setBackgroundColor(getResources().getColor(!isColorsInverted ? R.color.colorPrimaryDark :R.color.red));
+                        break;
+                    case "blue":
+                        buttonColourSwatch.setBackgroundColor(getResources().getColor(!isColorsInverted ? R.color.colorPrimaryDark :R.color.blue));
+                        break;
+                    case "green":
+                        buttonColourSwatch.setBackgroundColor(getResources().getColor(!isColorsInverted ? R.color.colorPrimaryDark :R.color.green));
+                        break;
+                    case "white":
+                        buttonColourSwatch.setBackgroundColor(getResources().getColor(!isColorsInverted ? R.color.colorPrimaryDark :R.color.white));
+                        break;
+                }
             }
         });
 

@@ -1,5 +1,7 @@
 package brunel.fyp.david.lightscamerahome;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,10 +12,14 @@ import android.widget.Button;
 
 import com.crystal.crystalrangeseekbar.interfaces.OnSeekbarFinalValueListener;
 import com.crystal.crystalrangeseekbar.widgets.BubbleThumbSeekbar;
+import com.google.android.gms.awareness.Awareness;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.HttpURLConnection;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -30,6 +36,7 @@ public class LightsFragment extends Fragment{
     public static double brightness;
     public static int colourValue;
     public static int saturation;
+    public static String colour = "";
 
     public static LightsFragment newInstance (int instance){
         Bundle args = new Bundle();
@@ -87,6 +94,9 @@ public class LightsFragment extends Fragment{
         Button buttonLightsWhite = (Button) view.findViewById(R.id.buttonWhite);
         buttonLightsWhite.setOnClickListener(clickListener);
 
+        Button buttonWeather = (Button) view.findViewById(R.id.buttonWeather);
+        buttonWeather.setOnClickListener(clickListener);
+
         return view;
     }
 
@@ -107,6 +117,7 @@ public class LightsFragment extends Fragment{
                     try {
                         colourValue = 65280;
                         saturation = 254;
+                        colour = "red";
                         lightsColour();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -117,6 +128,7 @@ public class LightsFragment extends Fragment{
                     try {
                         colourValue = 46920;
                         saturation = 254;
+                        colour = "blue";
                         lightsColour();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -127,6 +139,7 @@ public class LightsFragment extends Fragment{
                     try {
                         colourValue = 25500;
                         saturation = 254;
+                        colour = "green";
                         lightsColour();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -137,11 +150,18 @@ public class LightsFragment extends Fragment{
                     try {
                         colourValue = 38000;
                         saturation = 100;
+                        colour = "white";
                         lightsColour();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
+//                case R.id.buttonWeather:
+//                   GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(LightsFragment.this)
+//                            .addApi(Awareness.API)
+//                            .build();
+//                    mGoogleApiClient.connect();
+//                    break;
             }
         }
 
@@ -158,7 +178,6 @@ public class LightsFragment extends Fragment{
         httpCon.setRequestProperty("Accept", "application/json");
         out = new OutputStreamWriter(
                 httpCon.getOutputStream());
-
     }
 
     //lights on method

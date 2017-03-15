@@ -34,4 +34,6 @@ dependencies {
     compile files('libs/huesdkresources.jar')
     compile 'com.crystal:crystalrangeseekbar:1.1.1'
     'com.android.support:percent:23.0.0'
+    compile 'com.google.android.gms:play-services-contextmanager:9.2.1'
+    compile "com.andkulikov:transitionseverywhere:1.7.0"
 }
