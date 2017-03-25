@@ -6,15 +6,6 @@
     android:background="@color/colorBackground"
     android:id="@+id/container">
 
-    <!--<TextView-->
-        <!--android:id="@+id/messageView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_above="@+id/bottomBar"-->
-        <!--android:gravity="center"-->
-        <!--android:textColor="@color/white"-->
-        <!--android:text="Hi mom!" />-->
-
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"

@@ -29,7 +29,9 @@ public class CamerasFragment extends Fragment{
     private String ipAddress = "192.168.1.112";
     private String userName = "root";
     private String password = "Axis206";
+
     private String streamAddress1 = "http://root:Axis206@192.168.1.112/mjpg/video.mjpg";
+
     private String imageAddress1 = "http://192.168.1.112/axis-cgi/jpg/image.cgi?resolution=640x480";
 
     Button button1;
@@ -47,17 +49,21 @@ public class CamerasFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         getActivity().setTitle("Cameras");
 
+        //creating view with a layout
         View view = inflater.inflate(R.layout.fragment_cameras, container, false);
-
+        //creating new button
         button1 = (Button) view.findViewById(R.id.button1);
 
-        //button1.setBackground(createDrawableFromUrl(imageAddress1));
+//        button1.setBackground(createDrawableFromUrl(imageAddress1));
 
+        //on click listener for button
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), VLCActivity.class);
+                        //send stream address to new VLCActivity
                         intent.putExtra("videoUrl", streamAddress1);
+                        //starting intent
                         startActivity(intent);
             }
         });
@@ -70,12 +76,16 @@ public class CamerasFragment extends Fragment{
 
 //    public static Drawable createDrawableFromUrl(String imageWebAddress)
 //    {
+//        //new drawable
 //        Drawable drawable = null;
 //
 //        try
 //        {
+//            //input stream to connect to url
 //            InputStream inputStream = new URL(imageWebAddress).openStream();
+//            //setting drawable to the one from the url
 //            drawable = Drawable.createFromStream(inputStream, null);
+//            //closing input stream
 //            inputStream.close();
 //        }
 //        catch (MalformedURLException ex) { }

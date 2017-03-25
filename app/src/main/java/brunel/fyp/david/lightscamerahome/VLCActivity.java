@@ -47,16 +47,23 @@ public class VLCActivity extends Activity implements IVideoPlayer {
         Log.d(TAG, "VideoVLC -- onCreate -- START ------------");
         setContentView(R.layout.activity_vlc);
 
+        //new surfaceview and getting holder
         mSurfaceView = (SurfaceView) findViewById(R.id.player_surface);
         mSurfaceHolder = mSurfaceView.getHolder();
 
+        //new frame layout
         mSurfaceFrame = (FrameLayout) findViewById(R.id.player_surface_frame);
+        //setting url to string passed from cameras fragment intent
         mMediaUrl = getIntent().getExtras().getString("videoUrl");
 
         try {
+            //new instance of LibVLC class
             mLibVLC = new LibVLC();
+            //setting audio track
             mLibVLC.setAout(mLibVLC.AOUT_AUDIOTRACK);
+            //setting video feed
             mLibVLC.setVout(mLibVLC.VOUT_ANDROID_SURFACE);
+            //using hardware acceleration
             mLibVLC.setHardwareAcceleration(LibVLC.HW_ACCELERATION_FULL);
 
             mLibVLC.init(getApplicationContext());
@@ -64,9 +71,11 @@ public class VLCActivity extends Activity implements IVideoPlayer {
             Log.e(TAG, e.toString());
         }
 
+        //getting surface from holder
         mSurface = mSurfaceHolder.getSurface();
-
+        //setting video player to surface
         mLibVLC.attachSurface(mSurface, VLCActivity.this);
+        //setting which url to play
         mLibVLC.playMRL(mMediaUrl);
     }
 

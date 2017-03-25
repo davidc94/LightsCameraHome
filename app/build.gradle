@@ -26,14 +26,28 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:22.1.1'
     testCompile 'junit:junit:4.12'
+
+    //initially trying to add BottomBar
     compile project(':bottom-bar')
+
+    //adding FragNav and BottomBar
     compile 'com.ncapdevi:frag-nav:1.0.3'
     compile 'com.roughike:bottom-bar:1.3.9'
+
+    //adding VLC library
     compile "de.mrmaffen:vlc-android-sdk:1.0.6"
+
+    //adding Philips Hue SDK
     compile files('libs/huelocalsdk.jar')
     compile files('libs/huesdkresources.jar')
+
+    //adding seekbar (slider)
     compile 'com.crystal:crystalrangeseekbar:1.1.1'
-    'com.android.support:percent:23.0.0'
+
+
+    compile 'com.android.support:percent:23.0.0'
     compile 'com.google.android.gms:play-services-contextmanager:9.2.1'
+
+    //adding TransitionsEverywhere
     compile "com.andkulikov:transitionseverywhere:1.7.0"
 }

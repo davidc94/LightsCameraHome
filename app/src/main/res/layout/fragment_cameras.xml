@@ -5,13 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:text="Cameras content"/>-->
-
     <RelativeLayout
         android:id="@+id/relLayout"
         android:layout_width="match_parent"
