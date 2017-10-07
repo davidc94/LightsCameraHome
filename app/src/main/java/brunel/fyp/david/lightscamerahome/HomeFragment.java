@@ -32,7 +32,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class HomeFragment extends Fragment{
 
     public static URL url;
-    public static String urlString = "http://192.168.1.109/api/7SYAlHp9U81re9LheauelW6GS9urzKTuKcdT-GQR/lights/1/state";
+    public static String urlString = "http://192.168.1.159/api/C5LnKqM9kTLY3QY-pAsQNf9BAvHs25asvmb0IzVL/lights/7/state";
     public static HttpURLConnection httpCon;
     public static OutputStreamWriter out;
 

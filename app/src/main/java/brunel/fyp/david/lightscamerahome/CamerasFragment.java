@@ -30,7 +30,9 @@ public class CamerasFragment extends Fragment{
     private String userName = "root";
     private String password = "Axis206";
 
-    private String streamAddress1 = "http://root:Axis206@192.168.1.112/mjpg/video.mjpg";
+    //private String streamAddress1 = "http://root:Axis206@192.168.1.112/mjpg/video.mjpg";
+    //private String streamAddress1 = "rtsp://192.168.1.166/axis-media/media.amp";
+    private String streamAddress1 = "http://home:chell69@192.168.1.166/mjpg/1/video.mjpg";
 
     private String imageAddress1 = "http://192.168.1.112/axis-cgi/jpg/image.cgi?resolution=640x480";
 

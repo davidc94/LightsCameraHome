@@ -1,6 +1,7 @@
 package brunel.fyp.david.lightscamerahome;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import org.videolan.libvlc.LibVLC;
@@ -44,6 +46,10 @@ public class VLCActivity extends Activity implements IVideoPlayer {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //keep screen on
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         Log.d(TAG, "VideoVLC -- onCreate -- START ------------");
         setContentView(R.layout.activity_vlc);
 
@@ -77,11 +83,20 @@ public class VLCActivity extends Activity implements IVideoPlayer {
         mLibVLC.attachSurface(mSurface, VLCActivity.this);
         //setting which url to play
         mLibVLC.playMRL(mMediaUrl);
+
+        //trying to pass user and PW at this level
+//        String[] options = {"--sout-rtsp-user=home", "--sout-rtsp-pwd=chell69"};
+//        mLibVLC.playMRL(mMediaUrl, options);
+
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        //turn screen off
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         // MediaCodec opaque direct rendering should not be used anymore since there is no surface to attach.
         mLibVLC.stop();

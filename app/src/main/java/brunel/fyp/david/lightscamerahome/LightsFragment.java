@@ -29,7 +29,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class LightsFragment extends Fragment{
 
     public static URL url;
-    public static String urlString = "http://192.168.1.109/api/7SYAlHp9U81re9LheauelW6GS9urzKTuKcdT-GQR/lights/1/state";
+    public static String urlString = "http://192.168.1.159/api/C5LnKqM9kTLY3QY-pAsQNf9BAvHs25asvmb0IzVL/lights/7/state";
     public static HttpURLConnection httpCon;
     public static OutputStreamWriter out;
 
@@ -82,20 +82,15 @@ public class LightsFragment extends Fragment{
         });
 
         //creating buttons and onClickListeners
-        Button buttonLightsRed = (Button) view.findViewById(R.id.buttonRed);
-        buttonLightsRed.setOnClickListener(clickListener);
 
-        Button buttonLightsBlue = (Button) view.findViewById(R.id.buttonBlue);
-        buttonLightsBlue.setOnClickListener(clickListener);
+        Button buttonLightsWarm = (Button) view.findViewById(R.id.buttonWarm);
+        buttonLightsWarm.setOnClickListener(clickListener);
 
-        Button buttonLightsGreen = (Button) view.findViewById(R.id.buttonGreen);
-        buttonLightsGreen.setOnClickListener(clickListener);
+        Button buttonLightsCool = (Button) view.findViewById(R.id.buttonCool);
+        buttonLightsCool.setOnClickListener(clickListener);
 
-        Button buttonLightsWhite = (Button) view.findViewById(R.id.buttonWhite);
-        buttonLightsWhite.setOnClickListener(clickListener);
-
-        Button buttonWeather = (Button) view.findViewById(R.id.buttonWeather);
-        buttonWeather.setOnClickListener(clickListener);
+//        Button buttonWeather = (Button) view.findViewById(R.id.buttonWeather);
+//        buttonWeather.setOnClickListener(clickListener);
 
         return view;
     }
@@ -106,37 +101,11 @@ public class LightsFragment extends Fragment{
         public void onClick(View view){
             switch (view.getId()){
 
-                case R.id.buttonRed:
+                case R.id.buttonWarm:
                     try {
                         //setting values
-                        colourValue = 65280;
-                        saturation = 254;
-                        colour = "red";
-                        //running method
-                        lightsColour();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-
-                case R.id.buttonBlue:
-                    try {
-                        //setting values
-                        colourValue = 46920;
-                        saturation = 254;
-                        colour = "blue";
-                        //running method
-                        lightsColour();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    break;
-
-                case R.id.buttonGreen:
-                    try {
-                        //setting values
-                        colourValue = 25500;
-                        saturation = 254;
+                        colourValue = 12828;
+                        saturation = 52;
                         colour = "green";
                         //running method
                         lightsColour();
@@ -145,7 +114,7 @@ public class LightsFragment extends Fragment{
                     }
                     break;
 
-                case R.id.buttonWhite:
+                case R.id.buttonCool:
                     try {
                         colourValue = 38000;
                         saturation = 100;
